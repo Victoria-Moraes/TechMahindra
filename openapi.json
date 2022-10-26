@@ -1,0 +1,155 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Demo webhook for watson assistant",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "https://webhookupdated.tgj34ta1wbn.us-east.codeengine.appdomain.cloud",
+      "description": "Your application endpoint",
+      "variables": {
+        "subdomain": {
+          "default": "none",
+          "description": "The domain provided for you by IBM Cloud"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "noauthAuth": {
+        "type": "http",
+        "scheme": "noauth"
+      }
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "paths": {
+    "/api/v2/create_email": {
+      "post": {
+        "summary": "Create Ticket V2",
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "noauthAuth": []
+          }
+        ],
+        "description": "E-mail Creation Ticket",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "request": {
+                    "type": "object",
+                    "properties": {
+                      "employee": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "John Doe"
+                          },
+                          "cpf": {
+                            "type": "string",
+                            "example": "123.987.123-45"
+                          }
+                        }
+                      },
+                      "requester": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "John Doe"
+                          },
+                          "empresa":{
+                            "type":"string",
+                            "example":"taboca"
+                          },
+                          "cargo":{
+                            "type":"string",
+                            "example":"Gerente"
+                          },
+                          "centro_de_custo":{
+                            "type":"string",
+                            "example":"Financeiro"
+                          },
+                          "matricula": {
+                            "type": "string",
+                            "example": "12345"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "john_doe@test.com"
+                          },
+                          "localidade":{
+                            "type":"string",
+                            "example":"Alphavile"
+                          }
+                        }
+                      },
+                      "subject": {
+                        "type": "string",
+                        "example": "Help!"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "request": {
+                  "employee": {
+                      "name": "John Doe",
+                      "cpf":"123.987.123-45"
+                    },
+                  "requester": {
+                      "name": "John Doe",
+                      "empresa":"taboca",
+                      "cargo":"gerente",
+                      "centro_de_custo":"Financeiro",
+                      "matricula":"12345",
+                      "email":"john_doe@test.com",
+                      "localidade":"Alphavile"
+                    }
+                  },
+                  "subject":"Help!"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Enviado"
+          }
+        }
+      }
+    },
+    "/api/v2/remember_managers":{
+      "get":{
+            "summary":"Sends e-mail to all managers on the list",
+            "responses":{
+              "200": {
+                "description":"X E-mails enviados"
+                
+              }
+            }
+      }
+    
+    
+    }
+  }
+}

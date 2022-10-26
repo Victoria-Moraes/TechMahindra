@@ -1,0 +1,307 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Zendesk Support Ticketing",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "https://was7658.zendesk.com",
+      "description": "Your zendesk support server",
+      "variables": {
+        "subdomain": {
+          "default": "was7658",
+          "description": "The domain provided for you by Zendesk."
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "noauthAuth": {
+        "type": "http",
+        "scheme": "noauth"
+      }
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "paths": {
+    "/api/v2/create_email": {
+      "post": {
+        "summary": "Create Ticket V2",
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "noauthAuth": []
+          }
+        ],
+        "description": "E-mail Creation Ticket",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "request": {
+                    "type": "object",
+                    "properties": {
+                      "employee": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "John Doe"
+                          },
+                          "cpf": {
+                            "type": "string",
+                            "example": "123.987.123-45"
+                          },
+                          "badge_id": {
+                            "type": "string",
+                            "example": "12345"
+                          }
+                        }
+                      },
+                      "requester": {
+                        "type": "object",
+                        "properties": {
+						 "name":{
+							"type":"string",
+							"example":"John Doe"
+						 },
+                          "email": {
+                            "type": "string",
+                            "example": "john_doe@test.com"
+                          },
+						  "badge_id":{
+							"type":"string",
+							"example":"12345"
+						  }
+                        }
+                      },
+                      "subject": {
+                        "type": "string",
+                        "example": "Help!"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "request": {
+                  "requester": {
+					 "name":"John Doe",
+					  "email":"john_doe@test.com",
+					  "badge_id":"12345"
+				  },
+				  "employee": {
+					  "name": "John Doe",
+					  "cpf":"123.987.123-45",
+					  "badge_id": "12345"	
+				  },
+                  "subject": "Help!"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Create Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "request": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "priority": {
+                          "type": "string"
+                        },
+                        "subject": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "due_at": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "requester_id": {
+                          "type": "number"
+                        },
+                        "is_public": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/requests/{id}/comments.json": {
+      "get": {
+        "summary": "Get Ticket Comments",
+        "description": "Get all comments on a given ticket ID.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "The request ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "comments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "attachments": {
+                            "type": "array",
+                            "items": {},
+                            "example": []
+                          },
+                          "author_id": {
+                            "type": "number",
+                            "example": 1904601487434
+                          },
+                          "body": {
+                            "type": "string",
+                            "example": "My printer is on fire!"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2021-11-07T15:54:58Z"
+                          },
+                          "html_body": {
+                            "type": "string",
+                            "example": "<div class=\"zd-comment\" dir=\"auto\"><p dir=\"auto\">My printer is on fire!</p></div>"
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 1946003069874
+                          },
+                          "plain_body": {
+                            "type": "string",
+                            "example": "My printer is on fire!"
+                          },
+                          "public": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "request_id": {
+                            "type": "number",
+                            "example": 197
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "Comment"
+                          },
+                          "url": {
+                            "type": "string",
+                            "example": "https://d3v-ibm-test9.zendesk.com/api/v2/requests/197/comments/1946003069874.json"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "next_page": {
+                      "nullable": true,
+                      "example": null
+                    },
+                    "organizations": {
+                      "type": "array",
+                      "items": {},
+                      "example": []
+                    },
+                    "previous_page": {
+                      "nullable": true,
+                      "example": null
+                    },
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "agent": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 1904601487434
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "dudi002"
+                          },
+                          "organization_id": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "photo": {
+                            "nullable": true,
+                            "example": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

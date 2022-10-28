@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://webhookupdated.tgj34ta1wbn.us-east.codeengine.appdomain.cloud",
+      "url": "https://application-71.qda2xd7whcd.br-sao.codeengine.appdomain.cloud",
       "description": "Your application endpoint",
       "variables": {
         "subdomain": {
@@ -92,6 +92,10 @@
                             "type": "string",
                             "example": "12345"
                           },
+                          "fila": {
+                            "type": "string",
+                            "example": "SDC - N1 - Primeiro Nível"
+                          },
                           "email": {
                             "type": "string",
                             "example": "john_doe@test.com"
@@ -122,6 +126,7 @@
                       "cargo":"gerente",
                       "centro_de_custo":"Financeiro",
                       "matricula":"12345",
+                      "fila":"SDC - N1 - Primeiro Nível",
                       "email":"john_doe@test.com",
                       "localidade":"Alphavile"
                     }

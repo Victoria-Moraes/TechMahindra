@@ -12,8 +12,7 @@ PG_DB = os.getenv('PG_DB')
 def insert_manager_on_reminders_table(manager):
     ''''
     Inserts manager on table of reminders.
-    @param - manager => Dictionary with email and naame
-    example: manager={"name":"John Doe","email":"john@doe.com"}
+    @param - manager => Dictionary with email and name
     '''
 
     try:

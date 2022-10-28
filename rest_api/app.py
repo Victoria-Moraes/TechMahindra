@@ -78,6 +78,7 @@ def create_email():
             Dados do Funcionário:\n
             Nome: {data['employee']['name']}
             Matrícula: {data['employee']['cpf']}
+            Fila: {data['employee']['fila']}
             '''
 
     #Creating mail object
@@ -103,11 +104,9 @@ def remember_managers():
 
     reminder_message = """
                         Boa Tarde, Tudo bem?
-                        Não se esqueça de aprovar a criação de e-mails para o seu funcionário.
-                        Por favor, responda este e-mail para 
-                        teste@email.com.
+                        Seu ticket foi enviado para o setor responsável e será avaliado. Entraremos em contato em breve.
+                        Obrigada.
 
-                        Caso ja tenha feito, ignore este e-mail.
                         """
 
     #Connecting to DB
@@ -160,4 +159,4 @@ def remember_managers():
             connection.close()
             print("PostgreSQL connection is closed")
 
-    return f"{count} E-mails enviados", 200
+    return f"{count} Ticket enviado", 200

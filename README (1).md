@@ -1,6 +1,6 @@
 # Build Book
 
-> **Projeto:** TechMahindra - Taboca
+> **Projeto:** TechMahindra - Cebrace
 >
 > **Preparado por:** IBM Build Labs
 >

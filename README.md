@@ -83,9 +83,10 @@ corpo de solicitação esperado:
                 },
               "requester": {
                   "name": "John Doe",
-                  "empresa":"taboca",
+                  "empresa":"Cebrace",
                   "cargo":"gerente",
                   "centro_de_custo":"Financeiro",
+                  "fila":"fila",
                   "matricula":"12345",
                   "email":"john_doe@test.com",
                   "localidade":"Alphaville"

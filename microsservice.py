@@ -12,6 +12,6 @@ import requests
 
 def main(dict):
     
-    response = requests.get('<YOUR_CODE_ENGINE_APPLICATION_ENDPOINT>/api/v2/remember_managers')
+    response = requests.get('git.git-run-220903-1846220.private.br-sao.codeengine.appdomain.cloud/api/v2/remember_managers')
     response = response.content.decode()
     return {"message":response}

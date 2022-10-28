@@ -78,7 +78,7 @@
                           },
                           "empresa":{
                             "type":"string",
-                            "example":"taboca"
+                            "example":"Cebrace"
                           },
                           "cargo":{
                             "type":"string",
@@ -118,7 +118,7 @@
                     },
                   "requester": {
                       "name": "John Doe",
-                      "empresa":"taboca",
+                      "empresa":"Cebrace",
                       "cargo":"gerente",
                       "centro_de_custo":"Financeiro",
                       "matricula":"12345",
